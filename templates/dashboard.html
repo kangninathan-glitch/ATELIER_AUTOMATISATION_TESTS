@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard API</title>
+</head>
+<body>
+    <h1>Dashboard des tests API</h1>
+
+    <p>Tests réussis : {{ results.success }}</p>
+    <p>Tests échoués : {{ results.failed }}</p>
+    <p>Total : {{ results.total }}</p>
+    <p>Taux d'erreur : {{ results.error_rate }}</p>
+
+    <h2>Détail des tests</h2>
+    <ul>
+        {% for test in results.results %}
+            <li>
+                {{ test.name }} :
+                {% if test.passed %}
+                    ✅ Réussi
+                {% else %}
+                    ❌ Échoué
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
