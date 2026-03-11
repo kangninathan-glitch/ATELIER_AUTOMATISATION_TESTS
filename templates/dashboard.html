@@ -1,29 +1,36 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Dashboard API</title>
+    <title>Dashboard API Tests</title>
 </head>
 <body>
-    <h1>Dashboard des tests API</h1>
 
-    <p>Tests réussis : {{ results.success }}</p>
-    <p>Tests échoués : {{ results.failed }}</p>
-    <p>Total : {{ results.total }}</p>
-    <p>Taux d'erreur : {{ results.error_rate }}</p>
+<h1>Dashboard des tests API</h1>
 
-    <h2>Détail des tests</h2>
-    <ul>
-        {% for test in results.results %}
-            <li>
-                {{ test.name }} :
-                {% if test.passed %}
-                    ✅ Réussi
-                {% else %}
-                    ❌ Échoué
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+<p><a href="/run">Lancer un nouveau test</a></p>
+
+<h2>Historique des runs</h2>
+
+<table border="1">
+<tr>
+    <th>Date</th>
+    <th>Succès</th>
+    <th>Echecs</th>
+    <th>Total</th>
+    <th>Taux d'erreur</th>
+</tr>
+
+{% for r in runs %}
+<tr>
+    <td>{{ r[0] }}</td>
+    <td>{{ r[1] }}</td>
+    <td>{{ r[2] }}</td>
+    <td>{{ r[3] }}</td>
+    <td>{{ r[4] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
 </body>
 </html>
